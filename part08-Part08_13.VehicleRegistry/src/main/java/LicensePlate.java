@@ -19,4 +19,25 @@ public class LicensePlate {
         return country + " " + liNumber;
     }
 
+    @Override
+    public boolean equals(Object that) {
+        if(this == that) {
+            return true;
+        }
+
+       if(that == null || this.getClass()!=that.getClass()) {
+        return false;
+       }
+
+       LicensePlate compared = (LicensePlate) that;
+
+       return this.liNumber.equals(compared.liNumber) && this.country.equals(compared.country);
+    }
+
+    @Override
+    public int hashCode() {
+        String fullLicenseNumber = this.country + this.liNumber;
+        return fullLicenseNumber.hashCode();
+    }
+
 }
